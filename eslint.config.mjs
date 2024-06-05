@@ -3,11 +3,21 @@ import withNuxt from './.nuxt/eslint.config.mjs'
 
 export default withNuxt(
   // Your custom configs here
+
   {
-    files: ['**/*.ts', '**/*.tsx'],
+    files: ['**/*.vue', '**/*.ts'],
     rules: {
       'no-console': 'error',
-      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-explicit-any': 'error',
+      '@typescript-eslint/ban-ts-comment': [
+        'error',
+        {
+          'ts-expect-error': 'allow-with-description',
+          'ts-ignore': 'allow-with-description',
+          'ts-nocheck': false,
+          'ts-check': false,
+        },
+      ],
     },
   },
   {
@@ -26,21 +36,5 @@ export default withNuxt(
     },
 
   },
+
 )
-// .override(
-//   'nuxt/typescript',
-//   {
-//     rules: {
-//       '@typescript-eslint/no-explicit-any': 'off',
-//       '@typescript-eslint/ban-ts-comment': [
-//         'error',
-//         {
-//           'ts-expect-error': 'allow-with-description',
-//           'ts-ignore': 'allow-with-description',
-//           'ts-nocheck': false,
-//           'ts-check': false,
-//         },
-//       ],
-//     },
-//   },
-// )
